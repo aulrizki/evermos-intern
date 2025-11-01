@@ -13,7 +13,7 @@ type User struct {
     JenisKelamin string  `gorm:"size:255" json:"jenis_kelamin,omitempty"`
     Tentang   string    `gorm:"type:text" json:"tentang,omitempty"`
     Pekerjaan string    `gorm:"size:255" json:"pekerjaan,omitempty"`
-    Email     string    `gorm:"size:255" json:"email,omitempty"`
+    Email 	  string 	`gorm:"uniqueIndex" json:"email"`
     IdProvinsi string   `gorm:"size:255" json:"id_provinsi,omitempty"`
     IdKota    string    `gorm:"size:255" json:"id_kota,omitempty"`
     IsAdmin   bool      `gorm:"default:false" json:"is_admin"`
