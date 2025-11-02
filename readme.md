@@ -11,7 +11,6 @@ Struktur proyek menggunakan pendekatan Clean Architecture agar lebih terorganisa
 - MySQL Database
 - JWT Authentication
 - Postman / Thunder Client
-- Clean Architecture
 
 ---
 
