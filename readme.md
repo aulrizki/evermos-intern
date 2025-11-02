@@ -35,5 +35,3 @@ go mod tidy
 go run main.go
 
 ---
-
-## Alur Pengerjaan Proyek
