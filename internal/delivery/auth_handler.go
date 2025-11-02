@@ -37,7 +37,7 @@ func (h *AuthHandler) Register(c *fiber.Ctx) error {
     }
 
     return c.Status(201).JSON(fiber.Map{
-        "message": "register success",
+        "message": "register berhasil",
         "data":    user,
     })
 }
@@ -62,6 +62,11 @@ func (h *AuthHandler) Login(c *fiber.Ctx) error {
         return c.Status(401).JSON(fiber.Map{"error": "invalid credentials"})
     }
 
+    // 🟢 Tambahkan ini untuk memastikan nilai terbaru dari database
+    h.DB.First(&user, user.ID)
+    // Cetak ke console untuk memastikan
+    println("Login as:", user.Nama, " | IsAdmin:", user.IsAdmin)
+
     token, err := utils.GenerateJWT(user.ID, user.Email, user.IsAdmin)
     if err != nil {
         return c.Status(500).JSON(fiber.Map{"error": "token generation failed"})
@@ -72,3 +77,4 @@ func (h *AuthHandler) Login(c *fiber.Ctx) error {
         "token":   token,
     })
 }
+
